@@ -1,20 +1,20 @@
+from .models import  Movie, Role, Actor, Vote, Comment
 from rest_framework import serializers
-from .models import User, Movie, Role, Actor, Vote, Comment
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'email', 'types', 'name', 'lastName', 'phone', 'country', 'zip' )
+# class UserSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('id', 'email', 'types', 'name', 'lastName', 'phone', 'country', 'zip' )
 
 class MovieSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(
-        view_name='user_details',
-        read_only=True
-    )
+    # user = serializers.HyperlinkedRelatedField(
+    #     view_name='user_details',
+    #     read_only=True
+    # )
 
     class Meta:
         model = Movie
-        fields = ('id', 'user', 'name', 'image', 'description', 'budget')
+        fields = ('id', 'name', 'image', 'description', 'budget')
 
 class RoleSerializer(serializers.HyperlinkedModelSerializer):
     movie = serializers.HyperlinkedRelatedField(
@@ -27,10 +27,10 @@ class RoleSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'movie', 'name', 'image', 'description', 'age', 'ethnicity', 'category')
 
 class ActorSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(
-        view_name='user_details',
-        read_only=True
-    )
+    # user = serializers.HyperlinkedRelatedField(
+    #     view_name='user_details',
+    #     read_only=True
+    # )
     role = serializers.HyperlinkedRelatedField(
         view_name='role_details',
         read_only=True
@@ -38,13 +38,13 @@ class ActorSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Actor
-        fields = ('id', 'user', 'role', 'name', 'videoFile', 'image', 'resume')
+        fields = ('id', 'role', 'name', 'videoFile', 'image', 'resume')
 
 class VoteSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(
-        view_name='user_details',
-        read_only=True
-    )
+    # user = serializers.HyperlinkedRelatedField(
+    #     view_name='user_details',
+    #     read_only=True
+    # )
     actor = serializers.HyperlinkedRelatedField(
         view_name='actor_details',
         read_only=True
@@ -52,13 +52,13 @@ class VoteSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Vote
-        fields = ('id', 'user', 'actor')
+        fields = ('id', 'actor')
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(
-        view_name='user_details',
-        read_only=True
-    )
+    # user = serializers.HyperlinkedRelatedField(
+    #     view_name='user_details',
+    #     read_only=True
+    # )
     movie = serializers.HyperlinkedRelatedField(
         view_name='movie_details',
         read_only=True
@@ -74,4 +74,4 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ('id', 'user', 'movie', 'role', 'actor', 'message')
+        fields = ('id', 'movie', 'role', 'actor', 'message')

@@ -7,9 +7,7 @@ return (
         <Link to="/" className="li">
             Movies
         </Link>
-        <Link to="/logInOut" className="li">
-            SignUp/LogIn
-        </Link>
+        
     </div>
 );
 }

@@ -1,13 +1,13 @@
 from rest_framework import generics
-from .models import User, Movie, Role, Actor, Vote, Comment
-from .serializers import UserSerializer, MovieSerializer, RoleSerializer, ActorSerializer, VoteSerializer, CommentSerializer
+from .models import Movie, Role, Actor, Vote, Comment
+from .serializers import  MovieSerializer, RoleSerializer, ActorSerializer, VoteSerializer, CommentSerializer
 
-class UserList(generics.ListCreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-class UserDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+# class UserList(generics.ListCreateAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+# class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
 class MovieList(generics.ListCreateAPIView):
     queryset = Movie.objects.all()

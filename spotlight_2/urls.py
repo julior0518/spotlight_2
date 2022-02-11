@@ -3,8 +3,8 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
-    path('', views.UserList.as_view(), name='user_list'),
-    path('users/<int:pk>', views.UserDetail.as_view(), name='user_details'),
+    # path('', views.UserList.as_view(), name='user_list'),
+    # path('users/<int:pk>', views.UserDetail.as_view(), name='user_details'),
 
     path('movies', views.MovieList.as_view(), name='movie_list'),
     path('movies/<int:pk>', views.MovieDetail.as_view(), name='movie_details'),

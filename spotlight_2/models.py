@@ -1,30 +1,30 @@
 from django.db import models
 
 
-class User(models.Model):
-    USER_TYPE = (
-    ('performer', 'performer'),
-    ('studio', 'studio')
-    )
+# class User(models.Model):
+#     USER_TYPE = (
+#     ('performer', 'performer'),
+#     ('studio', 'studio')
+#     )
     
-    email = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    types = models.CharField(
-        max_length = 20,
-        choices = USER_TYPE,
-        default = 'performer') 
-    name = models.CharField(max_length=100)
-    lastName = models.CharField(max_length=100)
-    phone = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
-    zip = models.IntegerField()
+#     email = models.CharField(max_length=100)
+#     password = models.CharField(max_length=100)
+#     types = models.CharField(
+#         max_length = 20,
+#         choices = USER_TYPE,
+#         default = 'performer') 
+#     name = models.CharField(max_length=100)
+#     lastName = models.CharField(max_length=100)
+#     phone = models.CharField(max_length=100)
+#     country = models.CharField(max_length=100)
+#     zip = models.IntegerField()
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 class Movie(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='movies')
+    # user = models.ForeignKey(
+    #     User, on_delete=models.CASCADE, related_name='movies')
 
     name = models.CharField(max_length=100)
     image = models.ImageField()
@@ -59,8 +59,8 @@ class Role(models.Model):
         return self.name
 
 class Actor(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='actors')
+    # user = models.ForeignKey(
+    #     User, on_delete=models.CASCADE, related_name='actors')
     role = models.ForeignKey(
         Role, on_delete=models.CASCADE, related_name='actors')
     
@@ -73,8 +73,8 @@ class Actor(models.Model):
         return self.name
 
 class Vote(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='votes')
+    # user = models.ForeignKey(
+    #     User, on_delete=models.CASCADE, related_name='votes')
     actor = models.ForeignKey(
         Actor, on_delete=models.CASCADE, related_name='votes')
 
@@ -82,8 +82,8 @@ class Vote(models.Model):
         return str(self.actor)
 
 class Comment(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='comments')
+    # user = models.ForeignKey(
+    #     User, on_delete=models.CASCADE, related_name='comments')
     movie = models.ForeignKey(
         Movie, on_delete=models.CASCADE, related_name='comments', blank=True, null=True)
     role = models.ForeignKey(

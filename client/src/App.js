@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Route, Switch, useParams} from 'react-router-dom'
 import Nav from './components/Nav';
-import LogInOut from './components/LogInOut';
 import Movies from './components/Movie';
 import { BASE_URL } from './globals'
 import { useEffect, useState } from 'react';
@@ -9,15 +8,15 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-  const [users, setUsers] =useState([])
+  const [movies, setMovies] =useState([])
 
   useEffect(()=> {
-    async function allUsers() {
-      const res = await axios.get(`${BASE_URL}`);
+    async function allMovies() {
+      const res = await axios.get(`${BASE_URL}/movies`);
       console.log(res)
       // setUsers(res.data);
     }
-    allUsers()
+    allMovies()
   },[])
 
 
@@ -26,7 +25,6 @@ function App() {
       < Nav />
       <Switch>
         <Route exact path="/" render={Movies} />
-        <Route exact path="/logInOut" render={LogInOut} />
       </Switch>
     </div>
   );
