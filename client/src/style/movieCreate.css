@@ -1,0 +1,31 @@
+.MovieCreate {
+    background-color: rgb(67, 138, 185);
+    text-align: left;
+    width: 90%;
+    height: 90%;
+    
+}
+.MovieForm {
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    display: flex;
+    flex-direction: column;
+    margin: 10% 10px;
+}
+.inputForm{
+    margin:10px 0;
+    font-size: x-large;
+    background-color: rgba(240, 248, 255, 0);
+    padding: 10px;
+}
+
+::placeholder { 
+    color: black;
+    opacity: 1; 
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 100%;
+    }
+}
